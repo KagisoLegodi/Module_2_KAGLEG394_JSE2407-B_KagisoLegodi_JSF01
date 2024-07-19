@@ -206,7 +206,7 @@
         </div>
       </div>
     </form>
-    <div x-data="{ products: [] }"
+    <div x-data="{ products: [], loading: true }"
     x-init="
       fetch('https://fakestoreapi.com/products/')
         .then(response => response.json())
