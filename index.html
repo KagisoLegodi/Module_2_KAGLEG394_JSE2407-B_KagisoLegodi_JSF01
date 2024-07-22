@@ -219,50 +219,49 @@
   </div>
 </form>
 
-    <div
-    x-data="{ products: [], loading: true, detailViewOpen: false, selectedProduct: {} }"
-    x-init="
-      fetch('https://fakestoreapi.com/products')
-      .then(response => response.json())
-      .then(data => {
-        products = data;
-        loading = false;
-      })
-    "
-    class="background-color: #caf0f8;"
-  >
-    <div class="container mx-auto">
-      <div class="text-center mb-10 background-color: #caf0f8">
-        <h1 class="text-3xl font-bold text-gray-800">E-Store</h1>
-        <p class="text-gray-600">Explore our products</p>
+<div
+x-data="{ products: [], loading: true, detailViewOpen: false, selectedProduct: {} }"
+x-init="
+  fetch('https://fakestoreapi.com/products')
+  .then(response => response.json())
+  .then(data => {
+    products = data;
+    loading = false;
+  })
+"
+class="background-color: #caf0f8;"
+>
+<div class="container mx-auto">
+  <div class="text-center mb-10 background-color: #caf0f8">
+    <h1 class="text-3xl font-bold text-gray-800">E-Store</h1>
+    <p class="text-gray-600">Explore our products</p>
+  </div>
+  <div class="flex flex-wrap justify-center">
+    <template x-if="loading">
+      <div class="flex justify-center items-center h-64 w-full">
+        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+        <p class="text-center text-gray-500 text-xl">Loading...</p>
       </div>
-      <div class="flex flex-wrap justify-center">
-        <template x-if="loading">
-          <div class="flex justify-center items-center h-64 w-full">
-            <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
-            <p class="text-center text-gray-500 text-xl">Loading...</p>
-          </div>
-        </template>
-  
-        <template x-for="product in products" :key="product.id">
-          <div
-            class="bg-white rounded-lg shadow-md p-4 m-2 w-64 cursor-pointer"
-            @click="selectedProduct = product; detailViewOpen = true;"
-          >
-            <img
-              :src="product.image"
-              :alt="product.title"
-              class="w-full h-40 object-contain mb-4"
-            />
-            <h2 class="text-lg font-semibold text-gray-800 mb-2">
-              <span x-text="product.title"></span>
-            </h2>
-            <p class="text-blue-600 font-bold" x-text="`$${product.price}`"></p>
-            <p class="text-gray-500 text-sm" x-text="product.category"></p>
-          </div>
-        </template>
+    </template>
+
+    <template x-for="product in products" :key="product.id">
+      <div
+        class="bg-white rounded-lg shadow-md p-4 m-2 w-64 cursor-pointer"
+        @click="selectedProduct = product; detailViewOpen = true;"
+      >
+        <img
+          :src="product.image"
+          :alt="product.title"
+          class="w-full h-40 object-contain mb-4"
+        />
+        <h2 class="text-lg font-semibold text-gray-800 mb-2">
+          <span x-text="product.title"></span>
+        </h2>
+        <p class="text-blue-600 font-bold" x-text="`$${product.price}`"></p>
+        <p class="text-gray-500 text-sm" x-text="product.category"></p>
       </div>
-    </div>
+    </template>
+
   
     <!-- Modal -->
     <div
