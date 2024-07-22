@@ -116,18 +116,39 @@
       </nav>
     </header>
 
-    <form
+    <div
   x-data="{
+    products: [],
+    loading: true,
+    detailViewOpen: false,
+    selectedProduct: {},
     dropdownOpen: false,
     searchTerm: '',
     filterItem: 'All categories',
     categories: [],
+    filteredProducts: [],
+    fetchProducts() {
+      fetch('https://fakestoreapi.com/products')
+        .then(response => response.json())
+        .then(data => {
+          this.products = data;
+          this.filteredProducts = data;
+          this.loading = false;
+        });
+    },
     fetchCategories() {
       fetch('https://fakestoreapi.com/products')
         .then(response => response.json())
         .then(data => {
           this.categories = Array.from(new Set(data.map(product => product.category)));
         });
+    },
+    filterProducts() {
+      this.filteredProducts = this.products.filter(product => {
+        const matchesCategory = this.filterItem === 'All categories' || product.category === this.filterItem;
+        const matchesSearchTerm = this.searchTerm === '' || product.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+        return matchesCategory && matchesSearchTerm;
+      });
     }
   }"
   x-init="fetchCategories()"
