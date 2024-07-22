@@ -220,16 +220,16 @@
 </form>
 
 <div
-x-data="{ products: [], loading: true, detailViewOpen: false, selectedProduct: {} }"
-x-init="
-  fetch('https://fakestoreapi.com/products')
-  .then(response => response.json())
-  .then(data => {
-    products = data;
-    loading = false;
-  })
-"
-class="background-color: #caf0f8;"
+  x-data="{ products: [], loading: true, detailViewOpen: false, selectedProduct: {} }"
+  x-init="
+    fetch('https://fakestoreapi.com/products')
+    .then(response => response.json())
+    .then(data => {
+      products = data;
+      loading = false;
+    })
+  "
+  class="background-color: #caf0f8;"
 >
 <div class="container mx-auto">
   <div class="text-center mb-10 background-color: #caf0f8">
