@@ -135,6 +135,10 @@
     categories: [],
     filteredProducts: [],
     sortOrder: 'Default',
+        /**
+         * Fetches the list of products from the API and sets the state.
+         * @returns {void}
+         */
     fetchProducts() {
       fetch('https://fakestoreapi.com/products')
         .then(response => response.json())
@@ -144,6 +148,11 @@
           this.loading = false;
         });
     },
+
+        /**
+         * Fetches the list of product categories from the API and sets the state.
+         * @returns {void}
+         */
     fetchCategories() {
       fetch('https://fakestoreapi.com/products')
         .then(response => response.json())
@@ -151,6 +160,11 @@
           this.categories = Array.from(new Set(data.map(product => product.category)));
         });
     },
+
+        /**
+         * Filters the products based on the search term and selected category.
+         * @returns {void}
+        */
     filterProducts() {
       this.filteredProducts = this.products.filter(product => {
         const matchesCategory = this.filterItem === 'All categories' || product.category === this.filterItem;
@@ -159,6 +173,11 @@
       });
       this.sortProducts();
     },
+
+    /**
+    * Sorts the filtered products based on the selected sort order.
+    * @returns {void}
+    */
     sortProducts() {
       if (this.sortOrder === 'lowToHigh') {
         this.filteredProducts.sort((a, b) => a.price - b.price);
