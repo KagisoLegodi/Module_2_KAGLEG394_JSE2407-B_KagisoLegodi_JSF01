@@ -258,7 +258,7 @@
         </div>
 
         <div class="mb-4 flex justify-center">
-          <select x-model="sortOrder" title="sort" class="border rounded px-4 py-2">
+          <select x-model="sortOrder" @change="sortProducts" title="sort" class="border rounded px-4 py-2">
             <option value="Default">Price: Default</option>
             <option value="lowToHigh">Price: Low to High</option>
             <option value="highToLow">Price: High to Low</option>
