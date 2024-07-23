@@ -117,7 +117,7 @@
     </header>
 
     <div
-      x-data="{
+  x-data="{
     products: [],
     loading: true,
     detailViewOpen: false,
@@ -127,6 +127,7 @@
     filterItem: 'All categories',
     categories: [],
     filteredProducts: [],
+    sortOrder: 'Default', // Add this line
     fetchProducts() {
       fetch('https://fakestoreapi.com/products')
         .then(response => response.json())
@@ -149,10 +150,21 @@
         const matchesSearchTerm = this.searchTerm === '' || product.title.toLowerCase().includes(this.searchTerm.toLowerCase());
         return matchesCategory && matchesSearchTerm;
       });
+      this.sortProducts(); // Ensure sorting is applied after filtering
+    },
+    sortProducts() {
+      if (this.sortOrder === 'lowToHigh') {
+        this.filteredProducts.sort((a, b) => a.price - b.price);
+      } else if (this.sortOrder === 'highToLow') {
+        this.filteredProducts.sort((a, b) => b.price - a.price);
+      } else {
+        // Default sorting (if needed)
+        this.filteredProducts = [...this.products];
+      }
     }
   }"
-      x-init="fetchProducts(); fetchCategories();"
-    >
+  x-init="fetchProducts(); fetchCategories();"
+>
       <form>
         <div class="flex lg:w-[31.25rem] sm:w-[95%] md:w-full relative">
           <button
