@@ -257,7 +257,8 @@
 
       <template x-for="product in filteredProducts" :key="product.id">
         <div
-          class="bg-white rounded-lg shadow-md p-4 m-2 w-64 cursor-pointer"
+          class="bg-white rounded-lg shadow-md p-4 m-2 w-64 cursor-pointerflex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 border border-slate-200 shadow-slate-950/5 overflow-hidden
+          "
           @click="selectedProduct = product; detailViewOpen = true;"
         >
           <img
@@ -305,7 +306,7 @@
                 <img
                   :src="selectedProduct.image"
                   :alt="selectedProduct.title"
-                  class="w-full h-auto"
+                  class="w-full h-40 object-contain mb-4"
                   title="product"
                 />
               </div>
