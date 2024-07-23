@@ -117,7 +117,7 @@
     </header>
 
     <div
-  x-data="{
+      x-data="{
     products: [],
     loading: true,
     detailViewOpen: false,
@@ -163,8 +163,8 @@
       }
     }
   }"
-  x-init="fetchProducts(); fetchCategories();"
->
+      x-init="fetchProducts(); fetchCategories();"
+    >
       <form>
         <div class="flex lg:w-[31.25rem] sm:w-[95%] md:w-full relative">
           <button
@@ -254,11 +254,15 @@
         </div>
       </form>
       <div class="container mx-auto">
-        <div class="text-pretty mb-10 background-color: #caf0f8">
-        </div>
+        <div class="text-pretty mb-10 background-color: #caf0f8"></div>
 
         <div class="mb-4 flex justify-center">
-          <select x-model="sortOrder" @change="sortProducts" title="sort" class="border rounded px-4 py-2">
+          <select
+            x-model="sortOrder"
+            @change="sortProducts"
+            title="sort"
+            class="border rounded px-4 py-2"
+          >
             <option value="Default">Price: Default</option>
             <option value="lowToHigh">Price: Low to High</option>
             <option value="highToLow">Price: High to Low</option>
