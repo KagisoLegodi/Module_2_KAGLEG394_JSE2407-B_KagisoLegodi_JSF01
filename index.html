@@ -311,8 +311,8 @@
           </div>
         </template>
         <p class="text-gray-700 mb-4" x-text="selectedProduct.description"></p>
-        <button @click="addToCart(selectedProduct)" class="bg-cyan-700 hover:bg-cyan-900 text-white py-2 px-4 rounded mt-2 w-full sm:w-auto">Add to Cart</button>
-        <button @click="detailViewOpen = false" class="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded mt-2 w-full sm:w-auto">Close</button>
+        <button @click="addToCart(selectedProduct)" type="button" class="bg-cyan-700 hover:bg-cyan-900 text-white py-2 px-4 rounded mt-2 w-full sm:w-auto">Add to Cart</button>
+        <button @click="detailViewOpen = false" type="button" class="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded mt-2 w-full sm:w-auto">Close</button>
       </div>
     </div>
   </div>
